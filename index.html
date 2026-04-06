@@ -114,7 +114,6 @@
 <a class="font-['Noto_Serif'] text-lg font-light italic tracking-wide text-[#825151] dark:text-[#f4c2c2] border-b border-[#825151]/30 pb-1 font-semibold hover:text-[#825151] hover:tracking-widest transition-all duration-500" href="#">Home</a>
 <a class="font-['Noto_Serif'] text-lg font-light italic tracking-wide text-[#827473] dark:text-[#d4c2c2] hover:text-[#825151] hover:tracking-widest transition-all duration-500" href="#events">Events</a>
 <a class="font-['Noto_Serif'] text-lg font-light italic tracking-wide text-[#827473] dark:text-[#d4c2c2] hover:text-[#825151] hover:tracking-widest transition-all duration-500" href="#story">Story</a>
-<a class="font-['Noto_Serif'] text-lg font-light italic tracking-wide text-[#827473] dark:text-[#d4c2c2] hover:text-[#825151] hover:tracking-widest transition-all duration-500" href="#gallery">Gallery</a>
 <a class="font-['Noto_Serif'] text-lg font-light italic tracking-wide text-[#827473] dark:text-[#d4c2c2] hover:text-[#825151] hover:tracking-widest transition-all duration-500" href="#rsvp">RSVP</a>
 </div>
 <div class="flex items-center space-x-4">
@@ -280,11 +279,11 @@
 <h2 class="font-headline text-4xl text-primary italic mb-4">Konfirmasi Kehadiran</h2>
 <p class="font-body text-on-surface-variant">Suatu kehormatan bagi kami atas kehadiran Bapak/Ibu/Saudara/i</p>
 </div>
-<form class="relative z-10 space-y-8">
+<form class="relative z-10 space-y-8" id="rsvp-form">
 <div class="grid md:grid-cols-2 gap-8">
 <div class="space-y-2">
 <label class="font-label text-xs uppercase tracking-widest text-outline">Nama Lengkap</label>
-<input class="w-full bg-transparent border-b border-outline/30 focus:border-primary focus:ring-0 transition-all py-2 font-body text-lg" placeholder="Masukkan nama Anda" type="text"/>
+<input class="w-full bg-transparent border-b border-outline/30 focus:border-primary focus:ring-0 transition-all py-2 font-body text-lg" placeholder="Masukkan nama Anda" type="text" id="nama-input"/>
 </div>
 <div class="space-y-2">
 <label class="font-label text-xs uppercase tracking-widest text-outline">Jumlah Tamu</label>
@@ -309,7 +308,7 @@
 </div>
 <div class="space-y-2">
 <label class="font-label text-xs uppercase tracking-widest text-outline">Ucapan &amp; Doa</label>
-<textarea class="w-full bg-transparent border-b border-outline/30 focus:border-primary focus:ring-0 transition-all py-2 font-body text-lg resize-none" placeholder="Tuliskan pesan manis Anda untuk kami..." rows="4"></textarea>
+<textarea class="w-full bg-transparent border-b border-outline/30 focus:border-primary focus:ring-0 transition-all py-2 font-body text-lg resize-none" placeholder="Tuliskan pesan manis Anda untuk kami..." rows="4" id="ucapan-input"></textarea>
 </div>
 <div class="text-center pt-8">
 <button class="bg-primary text-on-primary px-12 py-4 rounded-full font-label text-sm tracking-[0.2em] shadow-lg shadow-primary/20 hover:scale-105 transition-transform duration-300" type="submit">KIRIM KONFIRMASI</button>
@@ -318,7 +317,7 @@
 </div>
 <div class="mt-20 space-y-8">
 <h3 class="font-headline text-2xl text-primary text-center italic">Guestbook</h3>
-<div class="grid gap-6">
+<div class="grid gap-6" id="guestbook-entries">
 <div class="p-8 bg-surface rounded-2xl border border-outline-variant/10 italic">
 <p class="font-body text-lg text-on-surface mb-4">"Selamat menempuh hidup baru Aris &amp; Dinda! Semoga menjadi keluarga yang sakinah, mawaddah, warahmah. Bahagia selamanya!"</p>
 <span class="font-label text-xs uppercase tracking-widest text-outline">— Keluarga Bpk. Sudjatmiko</span>
@@ -372,6 +371,40 @@ function updateCountdown() {
 
 updateCountdown();
 setInterval(updateCountdown, 1000);
+
+// Handle RSVP form submission
+document.getElementById('rsvp-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  
+  const nama = document.getElementById('nama-input').value.trim();
+  const ucapan = document.getElementById('ucapan-input').value.trim();
+  
+  if (nama && ucapan) {
+    const guestbookContainer = document.getElementById('guestbook-entries');
+    
+    // Create new guestbook entry
+    const newEntry = document.createElement('div');
+    newEntry.className = 'p-8 bg-surface rounded-2xl border border-outline-variant/10 italic';
+    newEntry.innerHTML = `
+      <p class="font-body text-lg text-on-surface mb-4">"${ucapan}"</p>
+      <span class="font-label text-xs uppercase tracking-widest text-outline">— ${nama}</span>
+    `;
+    
+    // Add to guestbook at the beginning
+    guestbookContainer.insertBefore(newEntry, guestbookContainer.firstChild);
+    
+    // Clear form inputs
+    document.getElementById('nama-input').value = '';
+    document.getElementById('ucapan-input').value = '';
+    document.querySelectorAll('input[name="attendance"]').forEach(input => input.checked = false);
+    document.querySelector('select').selectedIndex = 0;
+    
+    // Show success message (optional)
+    alert('Terima kasih! Ucapan Anda telah ditambahkan ke guestbook.');
+  } else {
+    alert('Mohon isi Nama dan Ucapan untuk mengirimkan');
+  }
+});
 </script>
 
 </body></html>
