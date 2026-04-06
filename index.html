@@ -121,26 +121,6 @@
         .scroll-animate.active {
             animation: fadeInUp 0.8s ease-out forwards;
         }
-        @keyframes hoverBounce {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            25% {
-                transform: translateY(-12px);
-            }
-            50% {
-                transform: translateY(0);
-            }
-            75% {
-                transform: translateY(-6px);
-            }
-        }
-        .hover-bounce {
-            transition: transform 0.3s ease;
-        }
-        .hover-bounce:hover {
-            animation: hoverBounce 0.6s ease-in-out;
-        }
     </style>
 </head>
 <body class="bg-background text-on-surface selection:bg-primary-container selection:text-on-primary-container">
@@ -166,9 +146,9 @@
 <div class="absolute inset-0 bg-gradient-to-b from-transparent via-background/20 to-background"></div>
 </div>
 <div class="relative z-10 text-center px-4">
-<span class="font-label text-xs uppercase tracking-[0.2em] text-primary mb-4 block font-semibold hover-bounce cursor-pointer">Save the Date</span>
-<h1 class="font-headline text-5xl md:text-7xl italic mb-3 leading-tight hover-bounce cursor-pointer" style="color: #572c0c; text-shadow: 3px 3px 8px rgba(255,255,255,0.6), 2px 2px 4px rgba(255,255,255,0.4);">Aris &amp; Dinda</h1>
-<span class="font-body text-lg md:text-2xl italic text-on-surface-variant mb-6 block font-bold hover-bounce cursor-pointer" style="text-shadow: 3px 3px 8px rgba(255,255,255,0.6), 2px 2px 4px rgba(255,255,255,0.4);">Sabtu, 24 Agustus 2026</span>
+<span class="font-label text-xs uppercase tracking-[0.2em] text-primary mb-4 block font-semibold">Save the Date</span>
+<h1 class="font-headline text-5xl md:text-7xl italic mb-3 leading-tight" style="color: #572c0c; text-shadow: 3px 3px 8px rgba(255,255,255,0.6), 2px 2px 4px rgba(255,255,255,0.4);">Aris &amp; Dinda</h1>
+<span class="font-body text-lg md:text-2xl italic text-on-surface-variant mb-6 block font-bold" style="text-shadow: 3px 3px 8px rgba(255,255,255,0.6), 2px 2px 4px rgba(255,255,255,0.4);">Sabtu, 24 Agustus 2026</span>
 
 <div class="flex justify-center gap-3 md:gap-6 mb-8">
 <div class="flex flex-col items-center py-2 px-4 rounded-lg bg-surface/40 backdrop-blur-sm border border-primary/20">
@@ -195,7 +175,7 @@
 <!-- Event Details -->
 <section class="py-24 px-8 max-w-7xl mx-auto" id="events">
 <div class="text-center mb-16">
-<h2 class="font-headline text-4xl md:text-5xl text-primary mb-4 italic hover-bounce cursor-pointer">Acara Pernikahan</h2>
+<h2 class="font-headline text-4xl md:text-5xl text-primary mb-4 italic">Acara Pernikahan</h2>
 <p class="font-body text-lg text-outline italic">Ungkapan syukur dan niat tulus kami</p>
 </div>
 <div class="grid md:grid-cols-2 gap-12">
@@ -206,7 +186,7 @@
 </div>
 <div class="relative z-10">
 <span class="font-label text-xs uppercase tracking-widest text-secondary mb-4 block">The Solemnization</span>
-<h3 class="font-headline text-3xl text-on-surface mb-6 italic hover-bounce cursor-pointer">Akad Nikah</h3>
+<h3 class="font-headline text-3xl text-on-surface mb-6 italic">Akad Nikah</h3>
 <div class="space-y-4 font-body text-lg text-on-surface-variant">
 <div class="flex items-center gap-3">
 <span class="material-symbols-outlined text-primary">calendar_today</span>
@@ -233,7 +213,7 @@
 </div>
 <div class="relative z-10">
 <span class="font-label text-xs uppercase tracking-widest text-on-secondary-container mb-4 block">The Celebration</span>
-<h3 class="font-headline text-3xl text-on-surface mb-6 italic hover-bounce cursor-pointer">Resepsi</h3>
+<h3 class="font-headline text-3xl text-on-surface mb-6 italic">Resepsi</h3>
 <div class="space-y-4 font-body text-lg text-on-surface-variant">
 <div class="flex items-center gap-3">
 <span class="material-symbols-outlined text-primary">calendar_today</span>
@@ -259,7 +239,7 @@
 <section class="py-24 bg-surface-container-low relative overflow-hidden" id="story">
 <div class="max-w-4xl mx-auto px-8">
 <div class="text-center mb-20">
-<h2 class="font-headline text-4xl md:text-5xl text-primary italic hover-bounce cursor-pointer">Kisah Kami</h2>
+<h2 class="font-headline text-4xl md:text-5xl text-primary italic">Kisah Kami</h2>
 </div>
 <div class="relative space-y-24">
 <div class="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-px bg-outline-variant/30 hidden md:block"></div>
@@ -310,7 +290,7 @@
 <span class="material-symbols-outlined text-[20rem]">spa</span>
 </div>
 <div class="relative z-10 text-center mb-12">
-<h2 class="font-headline text-4xl text-primary italic mb-4 hover-bounce cursor-pointer">Konfirmasi Kehadiran</h2>
+<h2 class="font-headline text-4xl text-primary italic mb-4">Konfirmasi Kehadiran</h2>
 <p class="font-body text-on-surface-variant">Suatu kehormatan bagi kami atas kehadiran Bapak/Ibu/Saudara/i</p>
 </div>
 <form class="relative z-10 space-y-8" id="rsvp-form">
@@ -350,7 +330,7 @@
 </form>
 </div>
 <div class="mt-20 space-y-8">
-<h3 class="font-headline text-2xl text-primary text-center italic hover-bounce cursor-pointer">Guestbook</h3>
+<h3 class="font-headline text-2xl text-primary text-center italic">Guestbook</h3>
 <div class="grid gap-6" id="guestbook-entries">
 <div class="p-8 bg-surface rounded-2xl border border-outline-variant/10 italic">
 <p class="font-body text-lg text-on-surface mb-4">"Selamat menempuh hidup baru Aris &amp; Dinda! Semoga menjadi keluarga yang sakinah, mawaddah, warahmah. Bahagia selamanya!"</p>
