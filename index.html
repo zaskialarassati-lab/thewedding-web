@@ -103,6 +103,24 @@
         .bounce-animation {
             animation: bounce 2s infinite;
         }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .scroll-animate {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .scroll-animate.active {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
     </style>
 </head>
 <body class="bg-background text-on-surface selection:bg-primary-container selection:text-on-primary-container">
@@ -342,6 +360,65 @@
 </footer>
 
 <script>
+// Scroll animation observer
+const observerOptions = {
+  threshold: 0.1,
+  rootMargin: '0px 0px -50px 0px'
+};
+
+const observer = new IntersectionObserver(function(entries) {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('active');
+    }
+  });
+}, observerOptions);
+
+// Add scroll-animate class to text elements
+document.addEventListener('DOMContentLoaded', function() {
+  // Hero section text
+  const heroTexts = document.querySelectorAll('.relative.z-10.text-center span, .relative.z-10.text-center h1');
+  heroTexts.forEach(text => {
+    text.classList.add('scroll-animate');
+    observer.observe(text);
+  });
+
+  // Section headings
+  const sectionHeadings = document.querySelectorAll('h2.font-headline, h3.font-headline');
+  sectionHeadings.forEach(heading => {
+    heading.classList.add('scroll-animate');
+    observer.observe(heading);
+  });
+
+  // Event detail cards
+  const cards = document.querySelectorAll('.relative.group.p-12.rounded-3xl');
+  cards.forEach(card => {
+    card.classList.add('scroll-animate');
+    observer.observe(card);
+  });
+
+  // Story milestones
+  const milestones = document.querySelectorAll('.relative.flex.flex-col.md\\:flex-row.items-center.justify-between.group');
+  milestones.forEach(milestone => {
+    milestone.classList.add('scroll-animate');
+    observer.observe(milestone);
+  });
+
+  // RSVP section
+  const rsvpSection = document.querySelector('.p-12.md\\:p-20.bg-surface-container-lowest');
+  if (rsvpSection) {
+    rsvpSection.classList.add('scroll-animate');
+    observer.observe(rsvpSection);
+  }
+
+  // Guestbook entries
+  const guestbookEntries = document.querySelectorAll('#guestbook-entries > div');
+  guestbookEntries.forEach(entry => {
+    entry.classList.add('scroll-animate');
+    observer.observe(entry);
+  });
+});
+
 function updateCountdown() {
   const weddingDate = new Date('2026-08-24T00:00:00').getTime();
   const now = new Date().getTime();
